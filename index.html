@@ -7,6 +7,16 @@
     <link rel="icon" type="image/x-icon" href="icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
         body {
             background: url('background.png') no-repeat center center fixed;
             background-size: cover;
@@ -15,17 +25,22 @@
             color: white;
             margin: 0;
             padding: 0;
+            -webkit-filter: none !important;
+            filter: none !important;
         }
 
         .container {
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
         }
 
         .logo {
-            max-width: 500px;
+            max-width: 100%;
+            height: auto;
         }
 
         .botao {
@@ -37,24 +52,159 @@
             text-decoration: none;
             font-size: 22px;
             border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
         }
 
         .botao:hover {
-            background-color: #4169e1;
+            background-color: #85a4ff;
+        }
+
+        .audio-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+
+        .audio-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .rules-box, .support-box, .help-box {
+            position: absolute;
+            bottom: 110px;
+            background-color: #85a4ff;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: left;
+            color: white;
+            display: flex;
+            align-items: center;
+            font-family: 'Outfit', sans-serif;
+            width: 65%;
+            max-width: 320px;
+        }
+
+        .rules-box {
+            left: 25%;
+            transform: translateX(-50%);
+        }
+
+        .help-box {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .support-box {
+            left: 75%;
+            transform: translateX(-50%);
+        }
+
+        .support-button {
+            position: absolute;
+            left: 75%;
+            bottom: 60px;
+            transform: translateX(-50%);
+            width: 65%;
+            max-width: 320px;
+            background-color: #82ec68;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+        }
+
+        .support-button:hover {
+            background-color: #82ec68;
+        }
+
+        .rules-box img, .support-box img, .help-box img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .rules-box p, .support-box p, .help-box p {
+            margin: 0;
+            flex: 1;
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                top: 35%;
+                width: 95%;
+            }
+
+            .botao {
+                font-size: 18px;
+                padding: 12px 24px;
+            }
+
+            .rules-box, .support-box, .help-box, .support-button {
+                width: 75%;
+                max-width: 300px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <audio autoplay loop>
+    <audio id="background-music" autoplay loop>
         <source src="music.mp3" type="audio/mpeg">
         Seu navegador não suporta o elemento de áudio.
     </audio>
     
+    <div class="audio-container" onclick="toggleAudio()">
+        <img src="audio.png" alt="Controle de áudio" id="audio-icon" class="audio-icon">
+    </div>
+    
     <div class="container">
         <img src="logo.png" alt="Logo" class="logo">
         <h2>Nosso servidor no Discord é o lugar perfeito para você interagir, jogar, ouvir música e se divertir com a comunidade!</h2>
-        <a href="https://discord.gg/HSKRmw3EXx" class="botao">Acessar Servidor</a>
+        <a href="https://discord.gg/HSKRmw3EXx" class="botao" target="_blank">Acessar Servidor</a>
     </div>
 
+    <div class="rules-box">
+        <img src="rules.png" alt="Regras">
+        <p>Nosso servidor possui uma lista de regras que devem ser seguidas à risca para garantir um ambiente harmonioso e respeitoso para todos. Quebrar uma delas pode resultar em punição.</p>
+    </div>
+
+    <div class="help-box">
+        <img src="support.png" alt="Suporte">
+        <p>Contamos com uma equipe dedicada e sempre atenta para garantir um ambiente seguro e agradável para todos os usuários. Estamos sempre vigiando e prontos para ajudar!</p>
+    </div>
+
+    <div class="support-box">
+        <img src="leaf.png" alt="Apoio">
+        <p>Seja um apoiador votando na nossa comunidade no site Discords.com! Ao votar, você nos ajuda a alcançar mais pessoas, trazendo alegria pra ainda mais pessoas! Tudo isso de graça!</p>
+    </div>
+
+    <a href="https://discords.com/servers/1328542912283148340/upvote" class="support-button" target="_blank">Apoiar Servidor</a>
+
+    <script>
+        const audio = document.getElementById('background-music');
+        const audioIcon = document.getElementById('audio-icon');
+        
+        audio.volume = 0.15;
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                audioIcon.src = 'audio.png';
+            } else {
+                audio.pause();
+                audioIcon.src = 'audiooff.png';
+            }
+        }
+    </script>
 </body>
 </html>
