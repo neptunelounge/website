@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptune Lounge</title>
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .logo {
+            max-width: 500px;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #85a4ff;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            border-radius: 8px;
+        }
+
+        .botao:hover {
+            background-color: #4169e1;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    
+    <div class="container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h2>Nosso servidor no Discord é o lugar perfeito para você interagir, jogar, ouvir música e se divertir com a comunidade!</h2>
+        <a href="https://discord.gg/HSKRmw3EXx" class="botao">Acessar Servidor</a>
+    </div>
+
+</body>
+</html>
